@@ -28,13 +28,24 @@ for file in fileList:
 			soup = BeautifulSoup(f)
 			gradeList = []
 			totalList = []
+			notRecorded = 0
 			for i in soup.find_all('span', class_="grade"):
-				gradeList.append(float(i.string))
+				if i.string == '-':
+					gradeList.append(0)
+					notRecorded += 1
+				else:
+					gradeList.append(float(i.string))
+			step = 0
 			for j in soup.find_all('span', class_="pointsPossible clearfloats"):
-				totalList.append(float(j.string[1:]))
+				if gradeList[step] == 0:
+					totalList.append(0)
+				else: 
+					totalList.append(float(j.string[1:]))
+				step += 1
 			course = str(file[0:-5])
 			percent = 100 * sum(gradeList)/sum(totalList)
 			print "Current grade in %s = %.1f" % (course, percent)
+			print "# of grades not recorded: %d" % (notRecorded)
 		if file[0] == '!':
 			f = open(file).read()
 			soup = BeautifulSoup(f)
@@ -49,7 +60,10 @@ for file in fileList:
 			percent = sum(gradeList)/len(gradeList)
 			print "Approximate grade in %s = %.1f" % (course, percent)
 
-#
+# TODO:
+# Want to write algorithm to extract from blackboard
+# Post to jhu login page
+# Get from bb
 
 
 
