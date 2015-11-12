@@ -1,0 +1,24 @@
+Last login: Thu Nov 12 02:50:59 on ttys000
+Andrews-MacBook-Pro:~ Andrew$ cd desktop
+Andrews-MacBook-Pro:desktop Andrew$ python gradeCalculator.py 
+What is the path of your folder? grades
+Current grade in biolab = 96.0
+# of grades not recorded: 4
+Current grade in chinese = 91.1
+# of grades not recorded: 0
+Current grade in java = 91.2
+# of grades not recorded: 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
